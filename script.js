@@ -12,15 +12,15 @@ function keyPress(e) {
     hidden();
   }
 }
-function toggleModal() {
-  modal.classList.toggle("hidden");
-  overlay.classList.toggle("hidden");
+function removeModal() {
+  modal.classList.remove("hidden");
+  overlay.classList.remove("hidden");
 }
 for (let i = 0; i < showModal.length; i++) {
-  showModal[i].addEventListener("click", toggleModal);
+  showModal[i].addEventListener("click", removeModal);
 }
-
 document.addEventListener("keydown", keyPress);
 closeModal.addEventListener("click", function () {
   hidden();
 });
+overlay.addEventListener("click", hidden);
