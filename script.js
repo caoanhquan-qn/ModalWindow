@@ -1,25 +1,26 @@
 "use strict";
 const modal = document.querySelector(".modal");
-const showModal0 = document.querySelectorAll(".show-modal")[0];
-const showModal1 = document.querySelectorAll(".show-modal")[1];
-const showModal2 = document.querySelectorAll(".show-modal")[2];
+const showModal = document.querySelectorAll(".show-modal");
 const closeModal = document.querySelector(".close-modal");
-const body = document.querySelector("body");
+const overlay = document.querySelector(".overlay");
+function hidden() {
+  modal.classList.add("hidden");
+  overlay.classList.add("hidden");
+}
 function keyPress(e) {
   if (e.key === "Escape") {
-    modal.classList.add("hidden");
-    body.classList.remove("overlay");
+    hidden();
   }
 }
 function toggleModal() {
   modal.classList.toggle("hidden");
-  body.classList.toggle("overlay");
+  overlay.classList.toggle("hidden");
 }
-showModal0.addEventListener("click", toggleModal);
-showModal1.addEventListener("click", toggleModal);
-showModal2.addEventListener("click", toggleModal);
+for (let i = 0; i < showModal.length; i++) {
+  showModal[i].addEventListener("click", toggleModal);
+}
+
 document.addEventListener("keydown", keyPress);
 closeModal.addEventListener("click", function () {
-  modal.classList.add("hidden");
-  body.classList.remove("overlay");
+  hidden();
 });
